@@ -21,18 +21,25 @@ module.exports = async (req, res) => {
         res.end(jsonify({code: "400", message: "This endpoint only accepts POST requests."}));        
     }
 
-    let payload = await json(req);
-    let imageData = payload.image_data;
-    let rawBufferImgData = new Buffer(imgData, 'base64').toString('binary');
+    try {
+       let payload = await json(req);
+       let imageData = payload.image_data;
+       let rawBufferImgData = new Buffer(imgData, 'base64').toString('binary');
 
-    owo.upload(rawBufferImgData).then(d => {
-        //now this is where the fun starts
-        // do nothing for now.
-    }).catch(e => {
-        // return plaintext error.
-        res.statusCode = 500;
-        res.end(e);
-    });
+       owo.upload(rawBufferImgData).then(d => {
+          //now this is where the fun starts
+          // do nothing for now.
+        }).catch(e => {
+         // return plaintext error.
+         res.statusCode = 500;
+         res.end(e);
+      });
+    } catch (e) {
+        res.statusCode = 400;
+        res.setHeader("Content-Type", "application/json");
+        res.end(jsonify({code: "400", message: "Request Body must be JSON."})); 
+    }
+
     res.statusCode = 503;
     res.setHeader("Content-Type", "application/json");
     res.end(jsonify({code: "503", message: "This endpoint is a Work in Progress"}));
