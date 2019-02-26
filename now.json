@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "api/*", "use": "@now/node" }
+    ],
+    "routes": [
+      {"src": "^/api/post/(.+)", "dest": "api/get_post.js"},
+      {"src": "^/api/post/", "dest": "api/get_post.js"},
+      {"src": "/api/", "status": 301, "headers": {"Location": "https://github.com/Sayo-nika/Junko/wiki"}},
+      {"src": "/api/submit", "dest": "api/submit.js"}
+    ],
+    "regions": ["sfo1", "bru1"]
+}

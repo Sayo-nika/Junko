@@ -1,0 +1,22 @@
+{
+  "name": "junko",
+  "version": "0.0.0",
+  "description": "Micro and Now compatible backend",
+  "main": "echo \"None\"",
+  "repository": "https://github.com/Sayo-nika/Junko",
+  "author": "Capuccino <enra@sayonika.moe>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "micro-dev api/*",
+    "start": "micro api/*"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "micro": "^9.3.3",
+    "owo.js": "^1.0.2"
+  },
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
+  }
+}
