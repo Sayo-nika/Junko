@@ -21,6 +21,6 @@ export class Post extends BaseEntity {
     source?: string;
 
     @ManyToOne(type => PostCollection, collection => PostCollection)
-    collections: PostCollection[];
+    collections?: PostCollection[];
 
 }

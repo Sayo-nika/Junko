@@ -9,17 +9,14 @@ export class SagiriController extends ApiController {
 
     @SendsResponse()
     @HttpPost("/get_source")
-    getSource() {
+    async getSource() {
         const req: express.Request = this.request;
         const res: express.Response = this.response;
         const data = req.body.imageData.replace(/^data:image\/png;base64,/, "");
+        const rawBuffer = new Buffer(data, "base64");
+        const returned = await sauceClient.getSource(rawBuffer);
 
-        // send the data to SauceNAO
-        sauceClient.getSource(data).then(s => {
-            res.setHeader("Content-Type", "application/json");
-            return s;
-        }).catch(e => {
-            return e;
-        })
+        res.setHeader("content-type", "application/json");
+        return returned;
     }
 }

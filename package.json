@@ -20,7 +20,7 @@
     "owo.js": "^1.0.2",
     "pg": "^7.8.1",
     "reflect-metadata": "^0.1.13",
-    "sagiri": "^1.4.4",
+    "sagiri": "^1.5.1",
     "typeorm": "^0.2.14",
     "typescript": "^3.3.3333"
   },
