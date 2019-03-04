@@ -2,7 +2,6 @@ import { Controller, ApiController, HttpGet, HttpPost, BindNumber } from "dinolo
 import owo = require("owo.js");
 import express = require("express");
 import { Post } from "../models/post";
-import { QueryExpressionMap } from "typeorm/query-builder/QueryExpressionMap";
 import { SagiriController } from "./sagiri-controller";
 
 @Controller('/posts')
