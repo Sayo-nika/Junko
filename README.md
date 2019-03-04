@@ -6,11 +6,11 @@ Backend for the Franchouchou Backend written entirely in TypeScript.
 
 ## What/Who's Junko
 
-Junko Konno is a character from Zombie Land Saga:
+This project is named after Junko Konno from Zombie Land Saga:
 
 >A soft-spoken idol from the Shōwa period who was popular during the 1980s before dying in a plane crash. Coming from an era without social media, she has reservations towards personally interacting with her fans. Her idol nickname is Zombie 4 (ゾンビィ4号 Zonbii Yon-gō). -Wikipedia
 
-## Running 
+## Running
 
 Make sure you have a running PostgreSQL server and acquired a SauceNAO key.
 
@@ -25,4 +25,4 @@ Podman: `podman pull chinodesuuu/junko`
 
 This project is Copyright &copy; 2019 Clarity Operations LLC under the Sayonika project.
 
-We are not related in any way to Cygames. 
+We are not related in any way to Cygames.
