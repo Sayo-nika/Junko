@@ -42,5 +42,6 @@ export class ContentController extends ApiController {
         await submission.save();
 
         res.writeHead(204);
+        res.send();
     }
 }
