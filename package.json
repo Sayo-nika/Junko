@@ -7,6 +7,10 @@
   "author": "Capuccino <enra@sayonika.moe>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "rimraf dist && tsc --p ./tsconfig.json",
+    "start": "npm run build && node dist/app.js"
+  },
   "dependencies": {
     "@types/express": "^4.16.1",
     "@types/node": "^11.10.4",
