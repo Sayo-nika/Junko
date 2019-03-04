@@ -38,7 +38,7 @@ export class ContentController extends ApiController {
 
         submission.title =  req.body.title;
         submission.url = hostedURL;
-        submission.source = sourceURL[0].url || null;
+        submission.source = req.body.source || sourceURL[0].url || null;
 
         await submission.save();
 
