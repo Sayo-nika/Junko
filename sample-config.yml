@@ -7,10 +7,6 @@ db:
   username: username # username for the DB. We recommend not using root
   password: password # password for the DB.
   database: prisma # Database name. By default it uses our product's name.
-  # Do not edit this. This declares the entities for Junko.
-  # Unless you know what you're doing, do not modify below here.
-  entities:
-      - "src/models/*.ts"
   synchronize: true
 
 sauceNaoKey: key # key for source lookup, go to saucenao.com to get a key.

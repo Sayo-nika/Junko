@@ -19,7 +19,6 @@ const configFile = fs.readFileSync("./config.json" || "./config.yml", {encoding:
 
 //export this so we can use the config.
 export const config: Config = YAML.parse(configFile);
-export const connection = async () => await createConnection(config.db);
 
 app.use(bodyParser.json());
 
