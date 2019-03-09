@@ -1,8 +1,13 @@
+// Copyright 2019 (c) Clarity Operations LLC
+// 
+// Licensed under MIT.
+
 import {Handler} from 'sagiri';
 import express = require("express");
 import {Controller, ApiController, HttpPost, SendsResponse } from 'dinoloop';
+import {config} from "../app";
 
-const sauceClient: Handler = new Handler(process.env.FRANCHOUCHOU_SAUCENAO_KEY, {numRes: 2, getRating: true});
+const sauceClient: Handler = new Handler(process.env.FRANCHOUCHOU_SAUCENAO_KEY || config.sauceNaoKey, {numRes: 2, getRating: true});
 
 @Controller("/sagiri")
 export class SagiriController extends ApiController {

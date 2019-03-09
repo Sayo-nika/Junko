@@ -1,3 +1,7 @@
+// Copyright 2019 (c) Clarity Operations LLC
+// 
+// Licensed under MIT.
+
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
 import { Post } from "./post";
 
