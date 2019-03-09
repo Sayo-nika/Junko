@@ -1,6 +1,6 @@
 # Junko
 
-Backend for the Franchouchou Backend written entirely in TypeScript.
+Backend for the Prisma Booru Backend written entirely in TypeScript.
 
 [[API Docs](#)] [[Frontend](#)]
 
