@@ -1,8 +1,9 @@
-import { DatabaseType, ConnectionOptions } from "typeorm";
-
 // Copyright 2019 (c) Clarity Operations LLC
 // 
 // Licensed under MIT.
+
+import { ConnectionOptions } from "typeorm";
+
 
 export interface Config {
     db: ConnectionOptions,
