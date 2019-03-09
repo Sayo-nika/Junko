@@ -13,8 +13,8 @@ import * as YAML from "yamljs";
 import { Config } from "./interfaces";
 
 const app: express.Application = express();
-const port = process.env.FRANCHOUCHOU_PORT || 2018;
-const configFile = fs.readFileSync("./config.json" || "./config.yml", {encoding: "utf8"});
+const port: number = parseInt(process.env.FRANCHOUCHOU_PORT) || 2018;
+const configFile: string = fs.readFileSync("./config.yml", {encoding: "utf8"});
 
 //export this so we can use the config.
 export const config: Config = YAML.parse(configFile);

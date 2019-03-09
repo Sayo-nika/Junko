@@ -18,7 +18,7 @@ export class SagiriController extends ApiController {
         const req: express.Request = this.request;
         const res: express.Response = this.response;
         const data = req.body.image_data.replace(/^data:image\/png;base64,/, "");
-        const rawBuffer = new Buffer(data, "base64");
+        const rawBuffer = Buffer.from(data, "base64");
         const returned = await sauceClient.getSource(rawBuffer || req.body.image_data);
 
         res.setHeader("content-type", "application/json");

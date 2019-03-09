@@ -17,6 +17,6 @@ export class PostCollection extends BaseEntity {
     @Column("text")
     title: string;
 
-    @OneToMany(type => Post, post => Post)
+    @OneToMany(type => Post, post => post.collections)
     images: Post[];
 }

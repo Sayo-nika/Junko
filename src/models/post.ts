@@ -24,7 +24,7 @@ export class Post extends BaseEntity {
     @Column()
     source?: string;
 
-    @ManyToOne(type => PostCollection, collection => PostCollection)
+    @ManyToOne(type => PostCollection, collection => collection.images)
     collections?: PostCollection[];
 
 }
