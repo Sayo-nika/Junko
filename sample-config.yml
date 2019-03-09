@@ -1,0 +1,17 @@
+# Sample Configuration for Junko
+# Keep in mind db here uses typeorm config
+db:
+  type: pg # The type of database to use. Junko by default uses Postgres.
+  host: localhost # The host where your DB is hosted
+  port: 3306 # port for the DB
+  username: username # username for the DB. We recommend not using root
+  password: password # password for the DB.
+  database: prisma # Database name. By default it uses our product's name.
+  # Do not edit this. This declares the entities for Junko.
+  # Unless you know what you're doing, do not modify below here.
+  entities:
+      - "src/models/*.ts"
+  synchronize: true
+
+sauceNaoKey: key # key for source lookup, go to saucenao.com to get a key.
+owoKey: key # for our private pomf. If you want to use other pomf tools, you need to modify this.

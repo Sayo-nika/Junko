@@ -2,12 +2,10 @@
 // 
 // Licensed under MIT.
 
+import { ConnectionOptions } from "typeorm";
+
 export interface Config {
-    db: {
-        host: string
-        user: string,
-        password: string
-    },
+    db: ConnectionOptions,
     sauceNaoKey: string,
     owoKey: string
 }
