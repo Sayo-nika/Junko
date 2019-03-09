@@ -13,10 +13,14 @@ export class ContentController extends ApiController {
     @HttpGet("/")
     async getContent() {
         const res: express.Response = this.response;
-
-        res.writeHead(503);
-        res.setHeader("Content-Type", "application/json");
-        return JSON.stringify({code: "503", message: "Parsing all data is not yet supported."});
+        const allPosts = await Post.find();
+        
+        try {
+            return allPosts;
+        } catch(e) {
+            res.writeHead(500);
+            return JSON.stringify({code: "500", message: `Error: ${e}`});
+        }
     }
 
     @HttpGet("/:id")
@@ -25,10 +29,10 @@ export class ContentController extends ApiController {
         const postEntry = await Post.findOneOrFail({id: id});
 
         try {
-            res.setHeader("Content-Type", "application/json");
-            return JSON.stringify(postEntry);
+            return postEntry;
         } catch(e) {
-            return e;
+            res.writeHead(500);
+            return JSON.stringify({code: "500", message: `Error: ${e}`});
         }
     }
 
@@ -38,7 +42,7 @@ export class ContentController extends ApiController {
         const res: express.Response = this.response;
         const submission = new Post();
         const data = req.body.imageData.replace(/^data:image\/png;base64,/, "");
-        const rawBuffer = new Buffer(data, 'base64');
+        const rawBuffer = Buffer.from(data, 'base64');
         const hostedURL: string = await owo.upload(rawBuffer);
 
         submission.title =  req.body.title;

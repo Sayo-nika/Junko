@@ -1,18 +1,11 @@
-import { DatabaseType } from "typeorm";
+import { DatabaseType, ConnectionOptions } from "typeorm";
 
 // Copyright 2019 (c) Clarity Operations LLC
 // 
 // Licensed under MIT.
 
 export interface Config {
-    db: {
-        type: DatabaseType,
-        host: string,
-        port: number,
-        username: string,
-        password: string,
-        database: string
-    },
+    db: ConnectionOptions,
     sauceNaoKey: string,
     owoKey: string
 }

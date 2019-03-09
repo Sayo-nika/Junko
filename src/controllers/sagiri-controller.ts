@@ -19,9 +19,18 @@ export class SagiriController extends ApiController {
         const res: express.Response = this.response;
         const data = req.body.image_data.replace(/^data:image\/png;base64,/, "");
         const rawBuffer = Buffer.from(data, "base64");
-        const returned = await sauceClient.getSource(rawBuffer || req.body.image_data);
+        let returned;
 
-        res.setHeader("content-type", "application/json");
+        if (rawBuffer !== null) {
+            returned = await sauceClient.getSauce(rawBuffer);
+        } else {
+            if (typeof req.body.image_data !== 'string') {
+                res.writeHead(400);
+                return "Invalid data. Must be base64 or URI.";
+            }
+
+            returned = await sauceClient.getSauce(req.body.image_data);
+        }
         return returned;
     }
 }
