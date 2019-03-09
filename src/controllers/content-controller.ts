@@ -39,7 +39,7 @@ export class ContentController extends ApiController {
         const submission = new Post();
         const data = req.body.imageData.replace(/^data:image\/png;base64,/, "");
         const rawBuffer = new Buffer(data, 'base64');
-        const hostedURL = await owo.upload(rawBuffer);
+        const hostedURL: string = await owo.upload(rawBuffer);
 
         submission.title =  req.body.title;
         submission.url = hostedURL;
