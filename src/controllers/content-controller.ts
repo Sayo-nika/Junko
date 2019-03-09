@@ -13,14 +13,17 @@ export class ContentController extends ApiController {
         const res: express.Response = this.response;
 
         res.writeHead(503);
+        res.setHeader("Content-Type", "application/json");
         return JSON.stringify({code: "503", message: "Parsing all data is not yet supported."});
     }
 
     @HttpGet("/:id")
     async getSpecificContent(@BindNumber() id: number) {
+        const res: express.Response = this.response;
         const postEntry = await Post.findOneOrFail({id: id});
 
         try {
+            res.setHeader("Content-Type", "application/json");
             return JSON.stringify(postEntry);
         } catch(e) {
             return e;
