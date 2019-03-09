@@ -10,7 +10,10 @@ export class ContentController extends ApiController {
     
     @HttpGet("/")
     async getContent() {
-        return "Nya";
+        const res: express.Response = this.response;
+
+        res.writeHead(503);
+        return JSON.stringify({code: "503", message: "Parsing all data is not yet supported."});
     }
 
     @HttpGet("/:id")
@@ -18,7 +21,7 @@ export class ContentController extends ApiController {
         const postEntry = await Post.findOneOrFail({id: id});
 
         try {
-            return postEntry;
+            return JSON.stringify(postEntry);
         } catch(e) {
             return e;
         }
@@ -43,6 +46,6 @@ export class ContentController extends ApiController {
         await submission.save();
 
         res.writeHead(204);
-        res.send();
+        res.end();
     }
 }
