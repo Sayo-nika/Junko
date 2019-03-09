@@ -8,7 +8,10 @@ Backend for the Franchouchou Backend written entirely in TypeScript.
 
 This project is named after Junko Konno from Zombie Land Saga:
 
+![Junko](https://cdn.awwni.me/15jar.png)
+
 >A soft-spoken idol from the Shōwa period who was popular during the 1980s before dying in a plane crash. Coming from an era without social media, she has reservations towards personally interacting with her fans. Her idol nickname is Zombie 4 (ゾンビィ4号 Zonbii Yon-gō). -Wikipedia
+
 
 ## Running
 
