@@ -1,7 +1,7 @@
 # Sample Configuration for Junko
 # Keep in mind db here uses typeorm config
 db:
-  type: pg # The type of database to use. Junko by default uses Postgres.
+  type: postgres # The type of database to use. Junko by default uses Postgres. We support MySQL and PG.
   host: localhost # The host where your DB is hosted
   port: 3306 # port for the DB
   username: username # username for the DB. We recommend not using root

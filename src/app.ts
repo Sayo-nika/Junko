@@ -11,7 +11,6 @@ import "reflect-metadata";
 import * as fs from "fs";
 import * as YAML from "yamljs";
 import { Config } from "./interfaces";
-import { createConnection } from "typeorm";
 
 const app: express.Application = express();
 const port = process.env.FRANCHOUCHOU_PORT || 2018;
