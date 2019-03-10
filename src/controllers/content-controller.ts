@@ -65,7 +65,7 @@ export class ContentController extends ApiController {
             return e;
         });
     }
-    
+
     // we're using a regex to match both /collections and /collections/
     @HttpGet(/\/collections\/?/gi)
     @HttpPost(/\/collections\/?/gi)
@@ -99,6 +99,7 @@ export class ContentController extends ApiController {
     }
 
     @HttpGet("/collections/:id")
+    @SendsResponse()
     getSpecificCollection(@BindNumber() id: number) {
         const res: express.Response = this.response;
 
