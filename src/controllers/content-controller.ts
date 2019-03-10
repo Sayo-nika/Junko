@@ -2,7 +2,7 @@
 // 
 // Licensed under MIT.
 
-import { Controller, ApiController, HttpGet, HttpPost, BindNumber } from "dinoloop";
+import { Controller, ApiController, HttpGet, HttpPost, BindNumber, SendsResponse } from "dinoloop";
 import owo = require("owo.js");
 import express = require("express");
 import { Post } from "../models/post";
@@ -14,8 +14,32 @@ import { PostCollection } from "../models/post-collection";
 export class ContentController extends ApiController {
     
     @HttpGet("/")
+    @HttpPost("/")
+    @SendsResponse()
     async getContent() {
         const res: express.Response = this.response;
+        const req : express.Request = this.request;
+        const data = req.body.imageData.replace(/^data:image\/png;base64,/, "");
+        const rawBuffer = Buffer.from(data, "base64");
+        const hostedURL: string = await owo.upload(rawBuffer);
+
+        if (req.method === "POST") createConnection(config.db).then(async connection => {
+             let post = new Post();
+             let postRepo = connection.manager.getRepository(Post);
+
+             post.title = req.body.title;
+             post.url = hostedURL;
+             post.source = req.body.source;
+
+             await postRepo.save(post);
+
+             // if we send a 204 that means its OK now.
+             res.writeHead(204);
+             res.end();
+           }).catch(e => {
+             res.writeHead(500);
+             return e;
+        });
 
         createConnection(config.db).then(async connection => {
             const allPosts = await connection.manager.find(Post);
@@ -27,6 +51,7 @@ export class ContentController extends ApiController {
     }
 
     @HttpGet("/:id")
+    @SendsResponse()
     async getSpecificContent(@BindNumber() id: number) {
         const res: express.Response = this.response;
 
@@ -40,37 +65,11 @@ export class ContentController extends ApiController {
             return e;
         });
     }
-
-    @HttpPost("/submit")
-    async postContent() {
-        const req: express.Request = this.request;
-        const res: express.Response = this.response;
-        const data = req.body.imageData.replace(/^data:image\/png;base64,/, "");
-        const rawBuffer = Buffer.from(data, "base64");
-        const hostedURL: string = await owo.upload(rawBuffer);
-
-        createConnection(config.db).then(async connection => {
-            let post = new Post();
-            let postRepo = connection.manager.getRepository(Post);
-
-            post.title = req.body.title;
-            post.url = hostedURL;
-            post.source = req.body.source;
-
-            await postRepo.save(post);
-
-            // if we send a 204 that means its OK now.
-            res.writeHead(204);
-            res.end();
-        }).catch(e => {
-            res.writeHead(500);
-            return e;
-        })
-    }
     
     // we're using a regex to match both /collections and /collections/
     @HttpGet(/\/collections\/?/gi)
     @HttpPost(/\/collections\/?/gi)
+    @SendsResponse()
     getCollections() {
         const res: express.Response = this.response;
         const req: express.Request = this.request;
