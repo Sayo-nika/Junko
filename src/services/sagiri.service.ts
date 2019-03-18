@@ -9,6 +9,11 @@ const sourceLookupClient = new Handler(config.sagiri.key, {numRes: config.sagiri
 @Injectable()
 export class SagiriService {
     async getSource(req: string | Buffer): Promise<Source[]> {
+
+        if (!Buffer.isBuffer(req)) {
+            req = Buffer.from(req, 'base64');
+        }
+
         return await sourceLookupClient.getSource(req);
     }
 }
