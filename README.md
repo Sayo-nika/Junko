@@ -1,31 +1,35 @@
 # Junko
 
-Backend for the Prisma Booru Backend written entirely in TypeScript.
+Simple [Nest](https://github.com/nestjs/nest)-based REST server for Aya.
 
-[[API Docs](#)] [[Frontend](#)]
+## Installation
 
-## What/Who's Junko
+```bash
+$ yarn
+```
 
-This project is named after Junko Konno from Zombie Land Saga:
+## Running the app
 
-![Junko](https://cdn.awwni.me/15jar.png)
+```bash
+# development
+$ yarn start
 
->A soft-spoken idol from the Shōwa period who was popular during the 1980s before dying in a plane crash. Coming from an era without social media, she has reservations towards personally interacting with her fans. Her idol nickname is Zombie 4 (ゾンビィ4号 Zonbii Yon-gō). -Wikipedia
+# watch mode
+$ yarn start:dev
 
+# production mode
+$ yarn start:prod
+```
 
-## Running
+## Test
 
-Make sure you have a running PostgreSQL server and acquired a SauceNAO key.
+```bash
+# unit tests
+$ npm run test
 
-simply run `yarn` and `yarn build`, and finally start it with `yarn start`.
+# e2e tests
+$ npm run test:e2e
 
-Want to flex on your Kubernetes/Container server? We got you covered with the docker images:
-
-Docker: `docker pull chinodesuuu/junko`
-Podman: `podman pull chinodesuuu/junko`
-
-## Disclaimer
-
-This project is Copyright &copy; 2019 Clarity Operations LLC under the Sayonika project.
-
-We are not related in any way to Cygames.
+# test coverage
+$ npm run test:cov
+```
