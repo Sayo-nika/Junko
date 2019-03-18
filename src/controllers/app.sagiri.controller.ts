@@ -9,7 +9,7 @@ export class SagiriController {
   constructor(private readonly sagiriService: SagiriService) {}
 
   @Post()
-  getHello(@Body() req: SagiriPostDto) {
+  getSource(@Body() req: SagiriPostDto) {
       return this.sagiriService.getSource(req.imageData);
   }
 }
