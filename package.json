@@ -23,6 +23,7 @@
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
+    "@types/yamljs": "^0.2.30",
     "express": "^4.16.4",
     "owo.js": "^1.0.2",
     "pg": "^7.9.0",
