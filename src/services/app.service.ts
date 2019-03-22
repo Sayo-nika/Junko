@@ -2,7 +2,7 @@
 // Licensed under MIT
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { Post } from 'src/entities/post.entity';
+import { PostEntity } from 'src/entities/post.entity';
 import owo = require('owo.js');
 import { config } from 'src/main';
 import { Collection } from 'src/entities/collection.entity';
@@ -11,13 +11,13 @@ import { Collection } from 'src/entities/collection.entity';
 export class AppService {
   constructor(
     @Inject('POST_REPOSITORY')
-    private readonly postRepository: Repository<Post>,
+    private readonly postRepository: Repository<PostEntity>,
 
     @Inject('COLLECTION_REPOSITORY')
     private readonly collectionRepository: Repository<Collection>,
   ) {}
 
-  async returnAllPosts(): Promise<Post[]> {
+  async returnAllPosts(): Promise<PostEntity[]> {
     return await this.postRepository.find();
   }
 
@@ -25,7 +25,7 @@ export class AppService {
     return await this.collectionRepository.find();
   }
 
-  async returnPost(id: number): Promise<Post[]> {
+  async returnPost(id: number): Promise<PostEntity[]> {
     return await this.postRepository.find({id});
   }
 
@@ -34,7 +34,7 @@ export class AppService {
   }
 
   async submitPost(payload) {
-    const submission = new Post();
+    const submission = new PostEntity();
     const subUpload = new owo(config.key);
 
     submission.caption = payload.caption;

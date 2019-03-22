@@ -1,7 +1,7 @@
 // Copyright 2019 (c) Clarity Operations LLC
 // Licensed under MIT.
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from 'typeorm';
-import { Post } from './post.entity';
+import { PostEntity } from './post.entity';
 
 @Entity()
 export class Collection {
@@ -11,6 +11,6 @@ export class Collection {
     @Column({length: 500})
     title: string;
 
-    @OneToMany(type => Post, post => post.inCollections)
-    posts: Post[];
+    @OneToMany(type => PostEntity, post => post.inCollections)
+    posts: PostEntity[];
 }

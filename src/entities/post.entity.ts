@@ -4,7 +4,7 @@ import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany} from 'typ
 import { Collection } from './collection.entity';
 
 @Entity()
-export class Post {
+export class PostEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
