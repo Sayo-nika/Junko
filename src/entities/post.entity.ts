@@ -11,6 +11,12 @@ export class Post {
     @Column({length: 500})
     caption: string;
 
+    @Column()
+    url: string;
+
+    @Column()
+    sourceUrl?: string;
+
     @ManyToMany(type => Collection, collection => collection.posts)
     inCollections: Collection[];
 }
