@@ -11,6 +11,7 @@ import "reflect-metadata";
 import * as fs from "fs";
 import * as YAML from "yamljs";
 import { Config } from "./interfaces";
+import { Sequelize } from "sequelize/types";
 
 const app: express.Application = express();
 const port: number = parseInt(process.env.FRANCHOUCHOU_PORT) || 2018;
@@ -18,6 +19,7 @@ const configFile: string = fs.readFileSync("./config.yml", {encoding: "utf8"});
 
 //export this so we can use the config.
 export const config: Config = YAML.parse(configFile);
+export const sequelize: Sequelize = new Sequelize(config.db.host);
 
 app.use(bodyParser.json());
 

@@ -1,30 +1,15 @@
 // Copyright 2019 (c) Clarity Operations LLC
 // 
 // Licensed under MIT.
+import {Model, Association} from 'sequelize';
+import { User } from './user';
 
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne } from "typeorm";
-import { PostCollection } from "./post-collection";
 
-/**
- * A class that defines a Post.
- * Posts are the basic element of the booru, containing the image URL, the title/caption, and a optional source URL.
- */
-@Entity()
-export class Post extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+export class Post extends Model {
+    public id!: number;
+    public caption!: string;
+    public source!: string;
 
-    @Column("text")
-    title: string;
-
-    @Column()
-    url: string;
-
-    // this would be selected from sagiri data btw.
-    @Column()
-    source?: string;
-
-    @ManyToOne(type => PostCollection, collection => collection.images)
-    collections?: PostCollection[];
-
+    public readonly submittedAt!: Date;
+    public readonly submittedBy!: Association<User>;
 }
